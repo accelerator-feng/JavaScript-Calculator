@@ -13,12 +13,12 @@
 })(window);
 $(function() {
     var $input=$("input");
-    $("main").mousedown(function(event) {
+    $("main").mousedown(function(event) { 
         var $btn = $(event.target);
         // 取值
         var value = $btn.attr("data-value");
         var result=$input.val();
-        var len = $input.val().length;
+        var len = result.length;
         $btn.css("background", "#2c9e95");
         // +-*/.后面不能接+-*/
         if (/[\+-\/\.\*]$/.test(result) && /[\+\/\*-]/.test(value)) {
