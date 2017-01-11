@@ -9,59 +9,59 @@
                 "<h2 style='padding-top:200px;margin:0'><strong>" + str + "<br/></strong></h2><p>" +
                 str2 + "</p><h2 style='margin:0'><strong> 如果你的使用的是双核浏览器,请切换到极速模式访问<br/></strong></h2></pre>"); 
         }
-    }
+    } 
 })(window);
 $(function() {
     var $input=$("input");
     $("main").mousedown(function(event) {
-        var btn = event.target;
+        var $btn = $(event.target);
         // 取值
-        var btnNode = btn.attributes["data-value"];
+        var value = $btn.attr("data-value");
+        var result=$input.val();
         var len = $input.val().length;
-        $(btn).css("background", "#2c9e95");
+        $btn.css("background", "#2c9e95");
         // +-*/.后面不能接+-*/
-        if (/[\+-\/\.\*]$/.test($input.val()) && /[\+\/\*-]/.test(btnNode.value)) {
+        if (/[\+-\/\.\*]$/.test(result) && /[\+\/\*-]/.test(value)) {
             return false;
         }
         // 不能出现连续小数点或一个数里多个小数点的情况
-        if (/\.\d*$/.test($input.val()) && btnNode.value === ".") {
+        if (/\.\d*$/.test(result) && value === ".") {
             return false;
         }
         // *和/不能出现在开头
-        if ($input.val() === "" && /[\*\/]/.test(btnNode.value)) {
+        if (result === "" && /[\*\/]/.test(value)) {
             return false;
         }
         // 0不能作为整数部分的开头
-        if (/\D0$/.test($input.val()) && /\d/.test(btnNode.value)) {
+        if (/\D0$/.test(result) && /\d/.test(value)) {
             return false;
         }
-        if ($input.val() === "0" && /\d/.test(btnNode.value)) {
-            $input.val(btnNode.value);
+        if (result === "0" && /\d/.test(value)) {
+            $input.val(value);
             return true;
         }
         // 清除溢出
-        if($input.val() ==="error"){$input.val("");}
-        switch (btnNode.value) {
+        if(result ==="error"){$input.val("");}
+        switch (value) {
             // 清空
             case "clear":
                 $input.val("");
                 break;
                 // 退格
             case "backspace":
-                var arr = $input.val().split("");
+                var arr = result.split("");
                 $input.val(arr.slice(0, arr.length - 1).join(""));
                 break;
                 // 求值
             case "equal":
-                if ($input.val() === "") {
+                if (result === "") {
                     return false;
                 }
-                $input.val(eval($input.val()));
+                $input.val(eval(result));
                 break;
                 // 输入
             default:
-                var origin=$input.val();
-                $input.val(origin+btnNode.value)
+                $input.val(result+value);
                 break;
         }
         // 溢出
