@@ -3,39 +3,35 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.7">
-    <title>JavaScript Calculator</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="initial-scale=0.6">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" type="text/css" href="normalize.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <input type="button" readonly>
-        </header>
-        <main>
-            <div data-value="clear">C</div>
-            <div data-value="/">/</div>
-            <div data-value="*">*</div>
-            <div data-value="backspace">←</div>
-            <div data-value="7">7</div>
-            <div data-value="8">8</div>
-            <div data-value="9">9</div>
-            <div data-value="-">-</div>
-            <div data-value="4">4</div>
-            <div data-value="5">5</div>
-            <div data-value=6>6</div>
-            <div data-value="+">+</div>
-            <div data-value="1">1</div>
-            <div data-value="2">2</div>
-            <div data-value="3">3</div>
-            <div data-value="equal" class="equal">=</div>
-            <div data-value="0" class="zero">0</div>
-            <div data-value=".">.</div>
-            </main>
+    <div class="mask">
+    <div class="select">
+        <p>选X(先手)还是选O(后手)?
+            <br>反正你也赢不了_(:з)∠)_</p><hr>
+        <input type="button" value="X" data-value="X">
+        <input type="button" value="O" data-value="O">
+        </div>
     </div>
-    <script type="text/javascript" src="jquery.min.js"></script>
-    <script type="text/javascript" src="base.js"></script>
+
+    <main>
+        <button type="button" value="0" data-index="0"></button> 
+        <button type="button" value="0" data-index="1"></button> 
+        <button type="button" value="0" data-index="2"></button> 
+        <button type="button" value="0" data-index="3"></button> 
+        <button type="button" value="0" data-index="4"></button> 
+        <button type="button" value="0" data-index="5"></button> 
+        <button type="button" value="0" data-index="6"></button> 
+        <button type="button" value="0" data-index="7"></button> 
+        <button type="button" value="0" data-index="8"></button>
+    </main>
+    <script src="jquery.min.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
