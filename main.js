@@ -1,12 +1,11 @@
 $(function() {
-    var $input=$("input");
-    $("main").mousedown(function(event) { 
-        var $btn = $(event.target);
-        // 取值
-        var value = $btn.attr("data-value");
-        var result=$input.val();
-        var len = result.length;
-        $btn.css("background", "#2c9e95");
+    var $input = $("input");
+    $("main").mousedown(function(event) {
+        var btn = $(event.target),
+            value = btn.data("value"),    // 按键值
+            result = $input.val(),    // 屏幕显示
+            len = result.length;
+        btn.css("background", "#2c9e95");
         // +-*/.后面不能接+-*/
         if (/[\+-\/\.\*]$/.test(result) && /[\+\/\*-]/.test(value)) {
             return false;
@@ -28,7 +27,7 @@ $(function() {
             return true;
         }
         // 清除溢出
-        if(result ==="error"){$input.val("");}
+        if (result === "error") { $input.val(""); }
         switch (value) {
             // 清空
             case "clear":
@@ -48,20 +47,15 @@ $(function() {
                 break;
                 // 输入
             default:
-                $input.val(result+value);
+                $input.val(result + value);
                 break;
         }
         // 溢出
         if ($input.val() === "Infinity") { $input.val("error"); }
         // 缩放显示
-        if(len>9){$input.css("fontSize","75px");}
-        else {$input.css("fontSize","100px");}
+        if (len > 9) { $input.css("fontSize", "75px"); } else { $input.css("fontSize", "100px"); }
     });
     $("html").mouseup(function() {
             $("div").css("background", "#02323e");
-        })
-        //屏蔽键盘输入
-        .keypress(function() { 
-            return false;
         });
 });
